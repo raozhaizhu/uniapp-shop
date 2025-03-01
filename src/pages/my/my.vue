@@ -6,6 +6,7 @@ const getData = () => {
   uni.request({
     method: 'GET',
     url: '/home/banner',
+    header: {},
   })
 }
 const memberStore = useMemberStore()
