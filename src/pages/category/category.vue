@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getCategoryTopAPI } from '@/services/category'
 import { getHomeBanner } from '@/services/home'
-import type { CategoryTopItem } from '@/types/category'
+import { getCategoryTopAPI } from '@/services/category.ts'
+import type { CategoryTopItem } from '@/types/category.d.ts'
 import type { BannerItem } from '@/types/home'
 import { onLoad } from '@dcloudio/uni-app'
 import { computed, ref } from 'vue'
