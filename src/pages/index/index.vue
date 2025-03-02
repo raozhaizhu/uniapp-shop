@@ -7,6 +7,7 @@ import { ref } from 'vue'
 import CategoryPanel from './components/CategoryPanel.vue'
 import Hotpanel from '@/pages/index/components/Hotpanel.vue'
 import type { RzzGuessInstance } from '@/types/component'
+import PageSkeleton from './components/PageSkeleton.vue'
 
 const bannerList = ref<BannerItem[]>([])
 const categoryList = ref<CategoryItem[]>([])
@@ -28,8 +29,13 @@ const getHomeHotPanelData = async () => {
   hotList.value = res.result
 }
 
-onLoad(() => {
-  getHomeBannerData(), getHomeCategoryData(), getHomeHotPanelData()
+const isLoading = ref(false)
+
+// 页面加载
+onLoad(async () => {
+  isLoading.value = true
+  await Promise.all([getHomeBannerData(), getHomeCategoryData(), getHomeHotPanelData()])
+  isLoading.value = false
 })
 // 获取猜你喜欢组件实例
 const guessRef = ref<RzzGuessInstance>()
@@ -37,21 +43,47 @@ const guessRef = ref<RzzGuessInstance>()
 const onScrolltolower = () => {
   guessRef.value?.getMore()
 }
+//
+// 下拉刷新
+const isTriggered = ref(false)
+const onRefresherrefresh = async () => {
+  // 开始动画
+  isTriggered.value = true
+  // 加载数据
+  // await getHomeBannerData(), await getHomeCategoryData(), await getHomeHotPanelData()
+  // 重置猜你喜欢数据
+  guessRef.value?.resetData(),
+    await Promise.all([
+      getHomeBannerData(),
+      getHomeCategoryData(),
+      getHomeHotPanelData(),
+      guessRef.value?.getMore(),
+    ])
+  // 结束动画
+  isTriggered.value = false
+}
 </script>
 
 <template>
   <view class="viewport">
     <Navbar />
+
     <scroll-view
+      refresher-enabled
+      @refresherrefresh="onRefresherrefresh"
+      :refresher-triggered="isTriggered"
       @scrolltolower="onScrolltolower"
       class="scroll-view"
       scroll-y
       :show-scrollbar="false"
     >
-      <RzzSwiper :list="bannerList" />
-      <CategoryPanel :list="categoryList" />
-      <Hotpanel :list="hotList" />
-      <RzzGuess ref="guessRef" />
+      <PageSkeleton v-if="isLoading" />
+      <template v-else>
+        <RzzSwiper :list="bannerList" />
+        <CategoryPanel :list="categoryList" />
+        <Hotpanel :list="hotList" />
+        <RzzGuess ref="guessRef" />
+      </template>
     </scroll-view>
   </view>
 </template>
