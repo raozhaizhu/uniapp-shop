@@ -1,16 +1,26 @@
 <script setup lang="ts">
-//
+import Navbar from '@/pages/index/components/Navbar.vue'
+import { getHomeBanner } from '@/services/home'
+import type { BannerItem } from '@/types/home'
+import { onLoad } from '@dcloudio/uni-app'
+import { ref } from 'vue'
+
+const bannerList = ref<BannerItem[]>([])
+
+const getHomeBannerData = async () => {
+  const res = await getHomeBanner()
+  console.log('响应数据', res)
+  bannerList.value = res.result
+}
+
+onLoad(() => {
+  getHomeBannerData()
+})
 </script>
 
 <template>
-  <uni-card
-    title="基础卡片"
-    sub-title="副标题"
-    extra="额外信息"
-    thumbnail="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png"
-  >
-    <text>一个带头像和双标题的基础卡片，此示例展示了一个完整的卡片。</text>
-  </uni-card>
+  <Navbar />
+  <RzzSwiper :list="bannerList" />
 </template>
 
 <style lang="scss">
