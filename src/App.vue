@@ -48,4 +48,7 @@ image {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 </style>

@@ -2,20 +2,18 @@
   "easycom": {
     "autoscan": true,
     "custom": {
-      // uni-ui 规则如下配置
       "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-      // 以Rzz开头的组件,在components文件夹中查找引入
       "^Rzz(.*)": "@/components/Rzz$1.vue"
     }
   },
   "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
       "path": "pages/index/index",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTextStyle": "white",
         "navigationBarTitleText": "首页"
+ 
       }
     },
     {
@@ -41,6 +39,12 @@
       "style": {
         "navigationBarTitleText": "登录"
       }
+    },
+    {
+      "path": "pages/hot/hot",
+      "style": {
+        "navigationBarTitleText": "热门推荐"
+      }
     }
   ],
   "globalStyle": {
@@ -49,7 +53,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  // 设置 TabBar
   "tabBar": {
     "color": "#333",
     "selectedColor": "#27ba9b",

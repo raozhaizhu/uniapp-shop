@@ -25,7 +25,6 @@ const getHomeCategoryData = async () => {
 
 const getHomeHotPanelData = async () => {
   const res = await getHomeHotPanel()
-  console.log('前台热门', res)
   hotList.value = res.result
 }
 
@@ -67,7 +66,6 @@ const onRefresherrefresh = async () => {
 <template>
   <view class="viewport">
     <Navbar />
-
     <scroll-view
       refresher-enabled
       @refresherrefresh="onRefresherrefresh"
@@ -75,7 +73,7 @@ const onRefresherrefresh = async () => {
       @scrolltolower="onScrolltolower"
       class="scroll-view"
       scroll-y
-      :show-scrollbar="false"
+      show-scrollbar="false"
     >
       <PageSkeleton v-if="isLoading" />
       <template v-else>
