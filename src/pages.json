@@ -13,7 +13,6 @@
         "navigationStyle": "custom",
         "navigationBarTextStyle": "white",
         "navigationBarTitleText": "首页"
- 
       }
     },
     {
@@ -44,6 +43,12 @@
       "path": "pages/hot/hot",
       "style": {
         "navigationBarTitleText": "热门推荐"
+      }
+    },
+    {
+      "path": "pages/goods/goods",
+      "style": {
+        "navigationBarTitleText": "商品详情"
       }
     }
   ],
