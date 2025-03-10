@@ -70,7 +70,8 @@
     "vue-i18n": "^9.2.2"
   },
   "devDependencies": {
-    "@dcloudio/types": "^3.3.3",
+    "@dcloudio/types": "^3.4.0",
+    "@dcloudio/uni-app": "^3.0.0",
     "@dcloudio/uni-automator": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-stacktracey": "3.0.0-alpha-3081220230802001",
@@ -78,8 +79,8 @@
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3081220230802001",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^18.11.9",
-    "@uni-helper/uni-app-types": "1.0.0-alpha.6",
-    "@uni-helper/uni-ui-types": "1.0.0-alpha.6",
+    "@uni-helper/uni-app-types": "^0.5.12",
+    "@uni-helper/uni-ui-types": "^0.5.12",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/runtime-core": "^3.2.45",

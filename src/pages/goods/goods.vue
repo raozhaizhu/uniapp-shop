@@ -3,14 +3,14 @@ import type {
   SkuPopupEvent,
   SkuPopupInstance,
   SkuPopupLocaldata,
-} from '@/components/vk-data-goods-sku-popup/vk-data-goods-sku-popup'
-import { postMemberCartAPI } from '@/services/cart'
+} from '@/components/vk-data-goods-sku-popup/vk-data-goods-sku-popup.d.ts'
+import { postMemberCartAPI } from '@/services/cart.ts'
 import { getGoodsByIdAPI } from '@/services/goods'
+import type { GoodsResult } from '@/types/goods'
 import { onLoad } from '@dcloudio/uni-app'
 import { computed, ref } from 'vue'
 import AddressPanel from './components/AddressPanel.vue'
 import ServicePanel from './components/ServicePanel.vue'
-import type { GoodsResult } from '@/types/goods.d.ts'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()

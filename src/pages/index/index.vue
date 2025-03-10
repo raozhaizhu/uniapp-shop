@@ -8,6 +8,8 @@ import CategoryPanel from './components/CategoryPanel.vue'
 import Hotpanel from '@/pages/index/components/Hotpanel.vue'
 import type { RzzGuessInstance } from '@/types/component'
 import PageSkeleton from './components/PageSkeleton.vue'
+import RzzGuess from '@/components/RzzGuess.vue'
+import RzzSwiper from '@/components/RzzSwiper.vue'
 
 const bannerList = ref<BannerItem[]>([])
 const categoryList = ref<CategoryItem[]>([])

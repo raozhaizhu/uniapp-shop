@@ -3,7 +3,7 @@
     "autoscan": true,
     "custom": {
       "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-      "^Rzz(.*)": "@/components/Rzz$1.vue"
+      "^Rzz(.*)": "@/components/Rzz$1/Rzz$1.vue"
     }
   },
   "pages": [
