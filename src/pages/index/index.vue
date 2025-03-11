@@ -6,10 +6,10 @@ import { onLoad } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 import CategoryPanel from './components/CategoryPanel.vue'
 import Hotpanel from '@/pages/index/components/Hotpanel.vue'
-import type { RzzGuessInstance } from '@/types/component'
 import PageSkeleton from './components/PageSkeleton.vue'
 import RzzGuess from '@/components/RzzGuess.vue'
 import RzzSwiper from '@/components/RzzSwiper.vue'
+import { useGuessList } from '@/composables/index'
 
 const bannerList = ref<BannerItem[]>([])
 const categoryList = ref<CategoryItem[]>([])
@@ -38,12 +38,8 @@ onLoad(async () => {
   await Promise.all([getHomeBannerData(), getHomeCategoryData(), getHomeHotPanelData()])
   isLoading.value = false
 })
-// 获取猜你喜欢组件实例
-const guessRef = ref<RzzGuessInstance>()
-// 滚动触底
-const onScrolltolower = () => {
-  guessRef.value?.getMore()
-}
+const { guessRef, onScrolltolower } = useGuessList()
+
 //
 // 下拉刷新
 const isTriggered = ref(false)
