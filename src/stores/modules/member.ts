@@ -1,22 +1,16 @@
+import type { LoginResult } from '@/types/member'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
-// 定义会员信息的类型
-type Member = {
-  nickname?: string
-  token?: string
-  [key: string]: any
-}
 
 // 定义 Store
 export const useMemberStore = defineStore(
   'member',
   () => {
     // 明确指定类型
-    const profile = ref<Member>()
+    const profile = ref<LoginResult>()
 
     // 保存会员信息，登录时使用
-    const setProfile = (val: Member) => {
+    const setProfile = (val: LoginResult) => {
       console.log('设置会员信息：', val) // 添加调试日志
       profile.value = val
     }
